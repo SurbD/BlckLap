@@ -1,0 +1,12 @@
+Hi {{ user.username }},
+
+Thanks for signing up to Blcklap! We want to make sure that we got your
+email right. Please verify your email by clicking the link below.
+
+{{ url_for('auth.confirm', token=token, _external=True) }}
+
+Sincerely,
+
+The Blcklap Team
+
+Note: replies to this email address are not monitored.

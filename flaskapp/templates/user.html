@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="content-section">
+        <div class="user-content">
+            <div class="user-profile">
+                <img class="user-image" src="{{ url_for('static', filename='profile_pics/'+ user.image_file)}}">
+            </div>
+            <div class="user-info">
+                <h2 class="user-username">{{ user.username|title }}</h2>
+                <p class="user-email">{{ user.email|lower }}</p>
+                {% if user.confirmed %}
+                    <small class="is-verified">Verified <i class="fa-solid fa-check-double green-it"></i></small>
+                {% else %}
+                    <small class="is-verified">Not verified</small>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

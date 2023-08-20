@@ -1,0 +1,16 @@
+<h3>Heyy {{ user.username }},</h3>
+
+<p>You have Requested to change your email. Please verify your email by clicking the link below.<br>
+
+<a href="{{ url_for('users.confirm_email', token=token, _external=True) }}">Complete Email Update</a>
+
+if you cannot click on the link, copy and paste the following URL into a new tab in your browser <br>
+{{ url_for('users.confirm_email', token=token, _external=True) }}
+<br>
+If you did not make this request then simply ignore this email and no changes will be made <br>
+<hr>
+Sincerely,<br>
+
+The Blcklap Team<br>
+
+Note: replies to this email address are not monitored.</p>

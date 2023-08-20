@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="content-section">
+        <form action="" method="POST">
+            {{ form.hidden_tag() }}
+            <fieldset>
+                <legend class="form-legend">Sign In</legend>
+                <div class="center-cont">
+                    <div class="form-group">
+                        {{ form.email.label(class="form-label") }}
+
+                        {% if form.email.errors %} 
+                            {{ form.email(class="form-lg") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.email.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.email(class="form-lg") }}
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        {{ form.password.label(class="form-label") }}
+
+                        {% if form.password.errors %} 
+                            {{ form.password(class="form-lg") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.password.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.password(class="form-lg") }}
+                        {% endif %}
+                    </div>
+                    <div class="form-group check-bx">
+                        {{ form.remember(class="btn btn-submit") }}{{  form.remember.label(class="text-muted") }}
+                    </div>
+                </div>
+            </fieldset>
+            <div class="form-group">
+                {{ form.submit(class="btn btn-submit") }}
+                <small class="text-muted mt-6">
+                    <a href="{{ url_for('auth.reset_request') }}" class="link">Forgot Password?</a>
+                </small>
+            </div>
+        </form>
+        <div class="text-muted small-info">
+            Don't have an account? <a href="{{ url_for('auth.register') }}" class="link">Sign up</a>
+        </div>
+    </div>
+{% endblock %}

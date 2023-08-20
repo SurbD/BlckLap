@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css"> -->
+    <script src="https://kit.fontawesome.com/3d39008166.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    
+    {% if title %}
+        <title>{{ title.title() }} - BlckLap</title>
+    {% else %}
+        <title>BlckLap</title>
+    {% endif %}
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="nav-bar">
+                <span class="Logo"><a href="{{ url_for('main.home') }}">BLCK<span class="green-it">L</span>AP</a></span>
+                <div class="nav-links">
+                    <ul>
+                        {% if current_user.is_authenticated %}
+                        <li class="nav-link"><a href="{{ url_for('main.home') }}">Home</a></li>
+                        <li class="nav-link"><a href="{{ url_for('users.account') }}">Account</a></li>
+                        {% endif %}
+                    </ul>
+                    <div class="nav-btnx">
+                        {% if current_user.is_authenticated %}
+                            <div class="dropdown">
+                                <div class="dropbtn"><a href="{{ url_for('users.account') }}"><img class="dropbtn-icon" src="{{ url_for('static', filename='profile_pics/'+ current_user.image_file)}}"></a></div>
+                                <div class="dropdown-content">
+                                    <a href="{{ url_for('main.settings') }}">Settings</a>
+                                    <a href="{{ url_for('auth.change_password') }}">Change Password</a>
+                                    <a href="{{ url_for('auth.logout') }}">Logout</a>
+                                </div>
+                                <!-- <button class="btn cta"><a class="text-black" href="{{ url_for('auth.logout') }}">Logout</a></button> -->
+                            </div>
+                        {% else %}
+                            <button class="btn cta"><a class="text-black" href="{{ url_for('auth.register') }}">Join today</a></button>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <!-- <div id="alert_id" class="alert"> -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div id="alert_id" class="alert alert-{{ category }}">
+                        {{ message }}
+                        <button type="button" class="close" onclick="dataDismiss()" aria-label="Close">&times;</button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <!-- </div> -->
+        <div class="container">
+            {% block content %} {% endblock %}
+        </div>
+    </main>
+
+    <!-- JavaScript for Flash Alert Canceling -->
+    <script>
+        function dataDismiss() {
+            var x = document.getElementById("alert_id");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>

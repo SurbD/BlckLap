@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="fleft">
+        <h1>Hello, {{ current_user.username }}</h1><br>
+        <h4>You have not confirmed your account yet.</h4><br>
+        <p class="small-info">
+            Before you can access this site you need to confirm your account. Check your inbox, you should have recieved an email with a confirmation link.
+        </p><br>
+        <p class="small-info text-muted">Need another confirmation email? <a href="{{ url_for('auth.resend_confirmation') }}" class="link">Click here</a></p>
+    </div>
+{% endblock %}

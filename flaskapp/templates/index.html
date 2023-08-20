@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="content-section">
+        <h1 class="heading">Happening <span class="green-it">now</span></h1>
+        <span class="form-legend mb-35">Join today.</span>
+        <div class="center-links bd-linex">
+            <div class="g-links bd-line_">
+                <div class="top-links">
+                    <div class="link-group">
+                        <a href="#" class="link-btn"><i class="fa-brands fa-google"></i><span class="link-btn-text">Sign up with Google</span></a>
+                    </div>
+                    <div class="link-group">
+                        <a href="#" class="link-btn"><i class="fa-brands fa-apple"></i></i><span class="link-btn-text">Sign up with Apple</span></a>
+                    </div>
+                </div>
+                <div class="link-gap">
+                    <span class="dash"></span> or <span class="dash"></span>
+                </div>
+                <div class="link-group green-link">
+                    <a href="{{ url_for('auth.register') }}" class="link-btn"><span class="link-btn-text">Create account</span></a>
+                </div>
+                <div class="terms text-muted">
+                    By signing up, you agree to the <a href="">Terms of Service</a> and <a href="">Privacy Policy,</a> including <a href="">Cookie Use.</a>
+                </div>
+            </div>
+            <div class="text-muted small-info">
+                Have an account already? <a href="{{ url_for('auth.login') }}" class="link">Log in</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

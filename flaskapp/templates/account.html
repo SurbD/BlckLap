@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="content-section">
+        <div class="profile">
+            <div class="pfp">
+                <img src="{{ image_file }}" alt="{{ current_user.username }} - profile pic">
+            </div>
+            <div class="profile-info">
+                {% if current_user.confirmed %}
+                    <h2 class="profile-username">{{ current_user.username|title }} <i class="fa-solid fa-check-double green-it"></i></h2>
+                {% else %}
+                    <h2 class="profile-username">{{ current_user.username|title }}</h2>
+                {% endif %}
+                <p class="profile-email">{{ current_user.email|lower }}</p>
+            </div>
+        </div>
+        <form action="" method="POST" enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <div class="form-group">
+                    {{ form.username.label(class="form-label") }}
+
+                    {% if form.username.errors %} 
+                        {{ form.username(class="form-lg") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.username.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.username(class="form-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.email.label(class="form-label") }}
+
+                    {% if form.email.errors %} 
+                        {{ form.email(class="form-lg") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.email.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.email(class="form-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-pic">
+                    {{ form.picture.label(class="form-label") }}
+                    
+                    {% if form.picture.errors %}
+                        {{ form.picture(class="form-lg") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.picture.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.picture(class="form-lg") }}
+                    {% endif %}
+                </div>
+            </fieldset>
+            <div class="form-group submit-cls">
+                {{ form.submit(class="btn btn-submit") }}
+            </div>
+        </form>
+    </div>
+{% endblock %}

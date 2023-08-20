@@ -1,0 +1,15 @@
+<h3>Hi {{ user.username }},</h3>
+
+<p>Thanks for signing up to Blcklap! We want to make sure that we got your
+email right. Please verify your email by clicking the link below.<br>
+
+<a href="{{ url_for('auth.confirm', token=token, _external=True) }}">Complete Verification</a>
+
+if you cannot click on the link, copy and paste the following URL into a new tab in your browser <br>
+{{ url_for('auth.confirm', token=token, _external=True) }}
+<br>
+Sincerely,<br>
+
+The Blcklap Team<br>
+
+Note: replies to this email address are not monitored.</p>
