@@ -4,7 +4,7 @@
 
 [![Author](https://img.shields.io/badge/Author-PyDevyn-orange)](https://github.com/surbd)
 
-Blcklap is an Authentication project built with Flask. It comprises of basic login and actions and account management options.
+Blcklap is an Authentication project built with Flask. It comprises of basic login actions and account management options.
 
 ## Features
 
@@ -18,7 +18,7 @@ Blcklap is an Authentication project built with Flask. It comprises of basic log
 
 ## Installation
 
-You would find required dependencies to run BlckLap on your local machine in the `requirements.txt` file.
+You would find the required dependencies to run BlckLap on your local machine in the `requirements.txt` file.
 
 Clone this Repo
 ```sh
@@ -29,7 +29,7 @@ Create a virtual environment and activate it (use `source venv\bin\activate` for
 python -m venv venv-name
 venv\Scripts\activate
 ```
-> Make sure you create the virtual environment is the project directory
+> Make sure you create the virtual environment in the project directory
 
 Install the dependencies and start the server.
 
@@ -41,7 +41,7 @@ FLASK_APP=run.py
 python run.py
 ```
 > Environments variables like `BLCKLAP_SECRET_KEY`, `EMAIL_USER`
-> and `EMAIL_PASS` others would have to be manually set
+> and `EMAIL_PASS` would have to be manually set
 
 ## BlckLap User Interface
 
